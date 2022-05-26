@@ -1,0 +1,22 @@
+{% extends 'blogs/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+  <h2>Login</h2>
+{% endblock header %}
+
+{% block content %}
+  <!-- Bootstrap auto check error in loginnand print message -->
+  
+  <!-- login -->
+  <form action="{% url 'users:login' %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    
+    {% buttons %}
+      <button name="submit" class="btn btn-primary">login</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'blogs:index' %}"/>
+  </form>
+{% endblock content %}
+

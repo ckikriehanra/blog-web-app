@@ -1,0 +1,1 @@
+Make sure static folder pushed.

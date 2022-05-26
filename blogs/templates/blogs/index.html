@@ -1,0 +1,32 @@
+{% extends "blogs/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+  <div class='jumbotron'>
+    <h1>Blog.</h1>
+  </div>
+{% endblock header %}
+
+{% block content %}
+  {% for blog_post in blog_posts %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>
+          {{ blog_post.title|linebreaks }}
+          <small>
+            {{ blog_post.date_added|date:'M d, Y H:i' }}
+            <a href="{% url 'blogs:edit_post' blog_post.id %}">
+            edit post</a>
+          </small>
+        </h3>
+      </div>
+
+      <div class="panel-body">
+        {{ blog_post.text|linebreaks }}
+      </div>
+    </div> <!-- panel -->
+  {% empty %}
+    There are no post yet.
+  {% endfor %}
+    
+{% endblock content %}
